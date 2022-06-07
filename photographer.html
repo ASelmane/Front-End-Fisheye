@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
-  </head>
-  <body>
+</head>
+<body>
     <header>
         <a href="/"><img src="assets/images/logo.png" alt="Fisheye Home page" class="logo" /></a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-      <div class="photograph-info"></div>
-      <div class="media-section"></div>
+    <main id="main" aria-hidden="false">
+        <div class="photograph-header">
+            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        </div>
+        <div class="photograph-info"></div>
+        <div class="media-filter">
+            <label id="filter-label">Trier par</label>
+            <ul id="filter" class="filter" role="listbox" aria-activedescendant="popularity" aria-labelledby="filter-label" aria-haspopup="listbox" aria-expanded="true">
+                <li id="popularity" class="popularity select"  role="option" aria-selected="true">
+                    <button>
+                        <h2>Popularité</h2>
+                    </button>
+                    <img class="arrow" src="/assets/icons/arrow.svg" alt=""></button>
+                </li>
+                <li id="date" class="date" aria-selected="false">
+                    <button>
+                        <h2>Date</h2>
+                    </button>
+                </li>
+                <li id="title" class="title" role="option" aria-selected="false">
+                    <button>
+                        <h2>Titre</h2>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="media-section"></div>
     </main>
-    <div id="contact_modal">
-		<div class="modal">
-		    <header id="modal-title">
-                <h2 >Contactez-moi</h2>
-                <img src="assets/icons/close.svg" onclick="closeModal()" />
+    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
+        <div class="modal">
+            <header>
+                <h2 id="modal-title">Contactez-moi</h2>
+                <button onclick="closeModal()"><img src="assets/icons/close.svg"/></button>
             </header>
-			<form id="form">
-				<div>
-					<label for="firstname">Prénom</label>
-					<input type="text" name="firstname" required>
+            <form id="form">
+                <div>
+                    <label for="firstname">Prénom</label>
+                    <input type="text" name="firstname" required>
                     <label for="lastname">Nom</label>
-					<input type="text" name="lastname" required>
+                    <input type="text" name="lastname" required>
                     <label for="Email">Email</label>
-					<input type="email" name="email" required>
+                    <input type="email" name="email" required>
                     <label for="message">Votre message</label>
-					<textarea name="message" rows="10" required></textarea>
-				</div>
+                    <textarea name="message" rows="10" required></textarea>
+                </div>
                 <button class="contact_button">Envoyer</button>
-			</form>
-		</div>
-	</div><script src="scripts/factories/media.js"></script>
+            </form>
+        </div>
+    </div>
+    <script src="scripts/factories/media.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+</body>
+
 </html>
