@@ -7,9 +7,26 @@ let arrow = document.querySelector(".arrow");
 let photograph = {};
 let mediaSort = {};
 
+
 //Change l'ordre des medias
 filter.addEventListener("click", () => {
-    filter.classList.toggle("active");
+    if (filter.classList.contains("active")) {
+        filter.ariaExpanded = true;
+        filter.classList.remove("active");
+    }
+    else {
+        filter.ariaExpanded = false;
+        filter.classList.add("active");
+    }
+});
+
+document.addEventListener("keydown", (e) => {
+    if (filter.classList.contains("active")) {
+        if (e.key === "Escape") {
+            filter.classList.remove("active");
+            filter.focus();
+        }
+    }
 });
 
 popularity.addEventListener("click", () => {
@@ -26,13 +43,18 @@ popularity.addEventListener("click", () => {
             popularity.append(arrow);
             date.classList.remove("select");
             popularity.classList.add("select");
+            date.setAttribute("aria-selected", "false");
         }
         else if(title.classList.contains("select")){
             filter.insertBefore(popularity, filter.firstChild);
             popularity.append(arrow);
             title.classList.remove("select");
             popularity.classList.add("select");
+            title.setAttribute("aria-selected", "false");
         }
+        popularity.setAttribute("aria-selected", "true");
+        filter.setAttribute("aria-activedescendant", "popularity");
+        getCardList();
     }
 });
 
@@ -50,13 +72,18 @@ date.addEventListener("click", () => {
             date.append(arrow);
             popularity.classList.remove("select");
             date.classList.add("select");
+            popularity.setAttribute("aria-selected", "false");
         }
         else if(title.classList.contains("select")){
             filter.insertBefore(date, filter.firstChild);
             date.append(arrow);
             title.classList.remove("select");
             date.classList.add("select");
+            title.setAttribute("aria-selected", "false");
         }
+        date.setAttribute("aria-selected", "true");
+        filter.setAttribute("aria-activedescendant", "date");
+        getCardList();
     }
 });
 
@@ -74,13 +101,18 @@ title.addEventListener("click", () => {
             title.append(arrow);
             date.classList.remove("select");
             title.classList.add("select");
+            date.setAttribute("aria-selected", "false");
         }
         else if(popularity.classList.contains("select")){
             filter.insertBefore(title, filter.firstChild);
             title.append(arrow);
             popularity.classList.remove("select");
             title.classList.add("select");
+            popularity.setAttribute("aria-selected", "false");
         }
+        title.setAttribute("aria-selected", "true");
+        filter.setAttribute("aria-activedescendant", "title");
+        getCardList();
     }
 });
 
@@ -130,6 +162,8 @@ async function displayData(photographer, medias) {
     medias.forEach((media) => {
         mediaFactory(media, photographer).getMediaCardDOM();
     });
+
+    getCardList();
 }
 
 async function init() {

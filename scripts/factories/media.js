@@ -13,6 +13,7 @@ function mediaFactory(data, photographer) {
         likeDiv.setAttribute("onClick", "addLike(event)");
         const counter = document.createElement("h3");
         const heart = document.createElement("div");
+        const button = document.createElement("button");
         heart.setAttribute("class", "heart");
         counter.setAttribute("class", "counter");
         counter.textContent = `${likes}`;
@@ -22,7 +23,7 @@ function mediaFactory(data, photographer) {
         let source = "";
         let thumbnail = {};
         if (image) {
-            source = `assets/photographers/${name}/${image}`;
+            source = `/assets/photographers/${name}/${image}`;
             thumbnail = document.createElement("img");
         } else {
             source = `/assets/photographers/${name}/${video}`;
@@ -31,7 +32,8 @@ function mediaFactory(data, photographer) {
         thumbnail.setAttribute("src", source);
         thumbnail.setAttribute("class", "thumbnail");
         mediaSection.append(div);
-        div.append(thumbnail, h3, likeDiv);
+        button.append(thumbnail);
+        div.append(button, h3, likeDiv);
     }
 
     function getLikePriceDOM() {

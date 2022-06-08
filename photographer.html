@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -8,19 +9,21 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
 </head>
+
 <body>
     <header>
         <a href="/"><img src="assets/images/logo.png" alt="Fisheye Home page" class="logo" /></a>
     </header>
     <main id="main" aria-hidden="false">
         <div class="photograph-header">
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <button id="modal-open" class="contact_button" onclick="displayModal()">Contactez-moi</button>
         </div>
         <div class="photograph-info"></div>
         <div class="media-filter">
             <label id="filter-label">Trier par</label>
-            <ul id="filter" class="filter" role="listbox" aria-activedescendant="popularity" aria-labelledby="filter-label" aria-haspopup="listbox" aria-expanded="true">
-                <li id="popularity" class="popularity select"  role="option" aria-selected="true">
+            <ul id="filter" class="filter" role="listbox" aria-activedescendant="popularity"
+                aria-labelledby="filter-label" aria-haspopup="listbox" aria-expanded="false">
+                <li id="popularity" class="popularity select" role="option" aria-selected="true">
                     <button>
                         <h2>Popularité</h2>
                     </button>
@@ -40,11 +43,11 @@
         </div>
         <div class="media-section"></div>
     </main>
-    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
+    <div id="contact_modal"  aria-hidden="true" role="dialog" aria-labelledby="modal-title">
         <div class="modal">
             <header>
-                <h2 id="modal-title">Contactez-moi</h2>
-                <button onclick="closeModal()"><img src="assets/icons/close.svg"/></button>
+                <h2 id="modal-title" tabindex="0">Contactez-moi</h2>
+                <button id="modal-close" onclick="closeModal()"><img src="assets/icons/close.svg" /></button>
             </header>
             <form id="form">
                 <div>
@@ -61,9 +64,16 @@
             </form>
         </div>
     </div>
+    <div id="lightbox" aria-hidden="true" role="dialog" aria-describedby="media-title">
+        <div tabindex="0" class="media"></div>
+        <button class="left-arrow"></button>
+        <button class="right-arrow"></button>
+        <button class="btn-close"></button>
+    </div>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/pages/photographer.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
 </body>
 
