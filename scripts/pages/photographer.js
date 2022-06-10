@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+
 let filter = document.querySelector(".filter");
 let popularity = document.querySelector(".popularity");
 let date = document.querySelector(".date");
@@ -13,10 +14,12 @@ filter.addEventListener("click", () => {
     if (filter.classList.contains("active")) {
         filter.ariaExpanded = true;
         filter.classList.remove("active");
+        filter.querySelector("button").focus();
     }
     else {
         filter.ariaExpanded = false;
         filter.classList.add("active");
+        
     }
 });
 
@@ -24,7 +27,8 @@ document.addEventListener("keydown", (e) => {
     if (filter.classList.contains("active")) {
         if (e.key === "Escape") {
             filter.classList.remove("active");
-            filter.focus();
+            document.activeElement.blur();
+            filter.querySelector("button").focus();
         }
     }
 });

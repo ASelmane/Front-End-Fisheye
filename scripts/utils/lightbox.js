@@ -34,7 +34,7 @@ document.addEventListener("keydown", (e) => {
             }
             break;
         case "Tab":
-            if (document.activeElement === lightbox.querySelector(".media")) {
+            if (document.activeElement === lightbox.querySelector(".closeup")) {
                 if (e.shiftKey) {
                     e.preventDefault();
                     lightbox.querySelector(".btn-close").focus();
@@ -43,7 +43,7 @@ document.addEventListener("keydown", (e) => {
             if (document.activeElement === lightbox.querySelector(".btn-close")) {
                 if (!e.shiftKey) {
                     e.preventDefault();
-                    lightbox.querySelector(".media").focus();
+                    lightbox.querySelector(".closeup").focus();
                 }
             }
         }
@@ -56,7 +56,6 @@ function getNextMedia() {
     currentCard = lightbox.querySelector(".media");
     for (let i = 0; i < cards.length; i++) {
         if (currentCard.firstChild.src === cards[i].firstChild.firstChild.src) {
-            console.log(cards[i + 1]);
             openLightbox(cards[i + 1]);
             break;
         }
@@ -67,7 +66,6 @@ function getPrevMedia() {
     currentCard = lightbox.querySelector(".media");
     for (let i = 0; i < cards.length; i++) {
         if (currentCard.firstChild.src === cards[i].firstChild.firstChild.src) {
-            console.log(cards[i - 1]);
             openLightbox(cards[i - 1]);
             break;
         }
@@ -79,20 +77,18 @@ leftArrow.addEventListener("click", getPrevMedia);
 function openLightbox(media) {
     lightbox.classList.add("show");
     document.body.style.overflow = "hidden";
-    if(lightbox.getAttribute("aria-hidden") === "true") {
-        if(lightbox.querySelector(".right-arrow")){
-            lightbox.querySelector(".right-arrow").focus();
-        }
-        else lightbox.querySelector(".left-arrow").focus();
-    }
     lightbox.setAttribute("aria-hidden", "false");
-    main.setAttribute("aria-hidden", "true");
+    document.querySelector("main").setAttribute("aria-hidden", "true");
     lightbox.querySelector(".media").remove();
     let medias = media.cloneNode(true);
     medias.setAttribute("class", "media");
-    medias.setAttribute("tabindex", "0");
+    medias.querySelector(".thumbnail").setAttribute("tabindex", "0");
     if (medias.querySelector(".thumbnail").tagName === "VIDEO") {
         medias.querySelector(".thumbnail").setAttribute("controls", "controls");
+        medias.querySelector(".thumbnail").setAttribute("aria-label", `${medias.querySelector("h3").textContent}, video`); 
+    }
+    else {
+        medias.querySelector(".thumbnail").setAttribute("alt", medias.querySelector("h3").textContent); 
     }
     medias.prepend(medias.querySelector(".thumbnail"));
     medias.querySelector(".thumbnail").setAttribute("class", "closeup");
@@ -112,6 +108,8 @@ function openLightbox(media) {
     } else if (media !== cards[cards.length - 1] && !lightbox.querySelector(".right-arrow")) {
         lightbox.insertBefore(rightArrow, closeBtn);
     }
+
+    lightbox.querySelector(".closeup").focus();
 }
 
 function closeLightbox() {
@@ -119,9 +117,8 @@ function closeLightbox() {
     let src = window.location.href.split(window.location.pathname)[0];
     imgSrc = imgSrc.replace(src, "");
     document.body.style.overflow = "auto";
-    main.setAttribute("aria-hidden", "false");
+    document.querySelector("main").setAttribute("aria-hidden", "false");
     lightbox.setAttribute("aria-hidden", "true");
     lightbox.classList.remove("show");
-    console.log(document.querySelector(".thumbnail[src='" + imgSrc + "']"));
     document.querySelector(".thumbnail[src='" + imgSrc + "']").parentNode.focus();
 }

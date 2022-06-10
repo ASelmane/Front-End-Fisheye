@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
+
 function mediaFactory(data, photographer) {
-    const { date, id, image, video, likes, Photographers_ID, price, title } = data;
+    const { date, image, video, likes, title } = data;
     const name = photographer.name.split(" ")[0];
 
     function getMediaCardDOM() {
@@ -8,32 +8,35 @@ function mediaFactory(data, photographer) {
         const div = document.createElement("div");
         div.setAttribute("class", "card");
         const h3 = document.createElement("h3");
-        const likeDiv = document.createElement("div");
-        likeDiv.setAttribute("class", "like");
-        likeDiv.setAttribute("onClick", "addLike(event)");
-        const counter = document.createElement("h3");
+        const likeBtn = document.createElement("button");
+        likeBtn.setAttribute("class", "like");
+        likeBtn.addEventListener("click", addLike);
+        likeBtn.setAttribute("aria-label", "J'aime");
+        const counter = document.createElement("h4");
         const heart = document.createElement("div");
         const button = document.createElement("button");
         heart.setAttribute("class", "heart");
         counter.setAttribute("class", "counter");
         counter.textContent = `${likes}`;
-        likeDiv.append(counter);
-        likeDiv.append(heart);
+        likeBtn.append(counter);
+        likeBtn.append(heart);
         h3.textContent = `${title}`;
         let source = "";
         let thumbnail = {};
         if (image) {
             source = `/assets/photographers/${name}/${image}`;
             thumbnail = document.createElement("img");
+            thumbnail.setAttribute("alt", `${title}, closeup view`);
         } else {
             source = `/assets/photographers/${name}/${video}`;
             thumbnail = document.createElement("video");
+            button.setAttribute("aria-label", `video, ${title}, closeup view`);
         }
         thumbnail.setAttribute("src", source);
         thumbnail.setAttribute("class", "thumbnail");
         mediaSection.append(div);
         button.append(thumbnail);
-        div.append(button, h3, likeDiv);
+        div.append(button, h3, likeBtn);
     }
 
     function getLikePriceDOM() {
@@ -68,10 +71,14 @@ function addLike(e) {
         count++;
         countGeneral++;
         div.classList.add("liked");
+        div.setAttribute("aria-label", "Image aimée");
+        div.focus();
     } else {
         count--;
         countGeneral--;
         div.classList.remove("liked");
+        div.setAttribute("aria-label", "j'aime");
+        div.focus();
     }
     counter.textContent = count;
     counterGeneral.textContent = countGeneral;

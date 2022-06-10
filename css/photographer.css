@@ -20,14 +20,14 @@
     align-items: center;
 }
 
-.photograph-header h2 {
+.photograph-header h1 {
     font-size: 4em;
     font-weight: normal;
-    color: #DB8876;
+    color: #D3573C;
     margin: 0;
 }
 
-.photograph-header h3 {
+.photograph-header h2, .photograph-header h3 {
     font-size: 1.5em;
     font-weight: bold;
     color: #901C1C;
@@ -37,6 +37,7 @@
 .photograph-header p {
     font-size: 1.2em;
     margin: 0;
+    color: #525252;
 }
 
 .photograph-header img{
@@ -150,7 +151,7 @@ form input {
     margin: 0 10% 5em;
 }
 
-.card button{
+.card button:nth-child(1) {
     width: 100%;
     padding: 0;
 }
@@ -173,7 +174,7 @@ textarea{
     color: #901C1C;
     align-items:baseline;
     font-size: 1.2em;
-    gap: 0.5em 0;
+    gap: 0.2em 0;
     min-width: 300px;
 }
 
@@ -186,10 +187,18 @@ textarea{
 }
 
 .like{
+    font-size: inherit;
+    width: auto;
     cursor: pointer;
     display: flex;
     gap: 0.2em;
     align-items: center;
+}
+
+.counter{
+    color: #901C1C;
+    margin: 0;
+    font-size: 1.2em;
 }
 
 .heart{
@@ -336,7 +345,7 @@ button{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.9);
+    background-color: #FAFAFA;
     z-index: 2;
 }
 
@@ -382,6 +391,10 @@ button{
     -webkit-mask: url('/assets/icons/arrow.svg') no-repeat center;
     mask: url('/assets/icons/arrow.svg') no-repeat center;
     cursor: pointer;
+}
+
+.right-arrow:focus, .left-arrow:focus, .btn-close:focus{
+    background-color: #D3573C;
 }
 
 .left-arrow{

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -22,7 +22,7 @@
         <div class="media-filter">
             <label id="filter-label">Trier par</label>
             <ul id="filter" class="filter" role="listbox" aria-activedescendant="popularity"
-                aria-labelledby="filter-label" aria-haspopup="listbox" aria-expanded="false">
+                aria-labelledby="filter-label" aria-expanded="false">
                 <li id="popularity" class="popularity select" role="option" aria-selected="true">
                     <button>
                         <h2>Popularité</h2>
@@ -46,29 +46,29 @@
     <div id="contact_modal"  aria-hidden="true" role="dialog" aria-labelledby="modal-title">
         <div class="modal">
             <header>
-                <h2 id="modal-title" tabindex="0">Contactez-moi</h2>
-                <button id="modal-close" onclick="closeModal()"><img src="assets/icons/close.svg" /></button>
+                <h2 id="modal-title">Contactez-moi</h2>
+                <button id="modal-close" aria-label="Close Contact form" onclick="closeModal()"><img src="assets/icons/close.svg" alt=""/></button>
             </header>
             <form id="form">
                 <div>
                     <label for="firstname">Prénom</label>
-                    <input type="text" name="firstname" required>
+                    <input id="firstname" type="text" name="firstname" required>
                     <label for="lastname">Nom</label>
-                    <input type="text" name="lastname" required>
+                    <input id="lastname" type="text" name="lastname" required>
                     <label for="Email">Email</label>
-                    <input type="email" name="email" required>
+                    <input id="Email" type="email" name="email" required>
                     <label for="message">Votre message</label>
-                    <textarea name="message" rows="10" required></textarea>
+                    <textarea id="message" name="message" rows="10" required></textarea>
                 </div>
                 <button class="contact_button">Envoyer</button>
             </form>
         </div>
     </div>
-    <div id="lightbox" aria-hidden="true" role="dialog" aria-describedby="media-title">
-        <div tabindex="0" class="media"></div>
-        <button class="left-arrow"></button>
-        <button class="right-arrow"></button>
-        <button class="btn-close"></button>
+    <div id="lightbox" aria-hidden="true" role="dialog" aria-label="image closeup view">
+        <div class="media"></div>
+        <button class="left-arrow" aria-label="Image precedente"></button>
+        <button class="right-arrow" aria-label="Image suivante"></button>
+        <button class="btn-close" aria-label="Fermer closeup"></button>
     </div>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/factories/photographer.js"></script>
