@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 let filter = document.querySelector(".filter");
 let popularity = document.querySelector(".popularity");
 let date = document.querySelector(".date");

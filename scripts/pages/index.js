@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 async function getPhotographers() {
     // get the data from the json file
     try {

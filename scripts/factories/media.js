@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function mediaFactory(data, photographer) {
     const { date, image, video, likes, title } = data;
     const name = photographer.name.split(" ")[0];

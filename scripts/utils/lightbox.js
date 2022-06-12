@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const lightbox = document.getElementById("lightbox");
 let leftArrow = document.querySelector(".left-arrow");
 let rightArrow = document.querySelector(".right-arrow");
