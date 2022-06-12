@@ -1,5 +1,5 @@
 /* exported photographerFactory */
-let photographerFactory = (data) => {
+function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/Photographers_ID/${portrait}`;
@@ -50,4 +50,4 @@ let photographerFactory = (data) => {
     }
 
     return { name, picture, getUserCardDOM, getUserProfilDOM };
-};
+}

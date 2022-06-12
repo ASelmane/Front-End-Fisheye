@@ -214,8 +214,8 @@ textarea{
     width: 1.2em;
     height: 1.2em;
     background-color: black;
-    -webkit-mask: url('/assets/icons/heart.svg') no-repeat center;
-    mask: url('/assets/icons/heart.svg') no-repeat center;
+    -webkit-mask: url('../assets/icons/heart.svg') no-repeat center;
+    mask: url('../assets/icons/heart.svg') no-repeat center;
 }
 
 .liked .heart{
@@ -373,8 +373,8 @@ button{
     background-color: #901c1c;
     border-radius: 50%;
     cursor: pointer;
-    -webkit-mask: url('/assets/icons/close.svg') no-repeat center;
-    mask: url('/assets/icons/close.svg') no-repeat center;
+    -webkit-mask: url('../assets/icons/close.svg') no-repeat center;
+    mask: url('../assets/icons/close.svg') no-repeat center;
 }
 
 .media{
@@ -397,8 +397,8 @@ button{
     width: 42px;
     height: 42px;
     background-color: #901C1C;
-    -webkit-mask: url('/assets/icons/arrow.svg') no-repeat center;
-    mask: url('/assets/icons/arrow.svg') no-repeat center;
+    -webkit-mask: url('../assets/icons/arrow.svg') no-repeat center;
+    mask: url('../assets/icons/arrow.svg') no-repeat center;
     cursor: pointer;
 }
 

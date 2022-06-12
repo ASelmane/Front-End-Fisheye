@@ -10,14 +10,14 @@ let cards = "";
 closeBtn.addEventListener("click", closeLightbox);
 
 // get media list and set event listeners on each media
-let getCardList = () => {
+function getCardList() {
     cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
         card.querySelector("button").addEventListener("click", () => {
             openLightbox(card);
         });
     });
-};
+}
 
 // Set different action on the keyboard (left and right arrow, escape) + block focus on the lightbox
 document.addEventListener("keydown", (e) => {
@@ -121,7 +121,7 @@ function openLightbox(media) {
 function closeLightbox() {
     let imgSrc = lightbox.querySelector(".media").firstChild.src;
     let src = window.location.href.split(window.location.pathname)[0];
-    imgSrc = imgSrc.replace(src, "");
+    imgSrc = imgSrc.replace(src + "/", "");
     document.body.style.overflow = "auto";
     document.querySelector("main").setAttribute("aria-hidden", "false");
     lightbox.setAttribute("aria-hidden", "true");

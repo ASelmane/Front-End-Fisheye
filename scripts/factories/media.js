@@ -1,5 +1,5 @@
 /* exported mediaFactory */
-let mediaFactory = (data, photographer) => {
+function mediaFactory(data, photographer) {
     const { date, image, video, likes, title } = data;
     const name = photographer.name.split(" ")[0];
 
@@ -25,11 +25,11 @@ let mediaFactory = (data, photographer) => {
         let source = "";
         let thumbnail = {};
         if (image) {
-            source = `/assets/photographers/${name}/${image}`;
+            source = `assets/photographers/${name}/${image}`;
             thumbnail = document.createElement("img");
             thumbnail.setAttribute("alt", `${title}, closeup view`);
         } else {
-            source = `/assets/photographers/${name}/${video}`;
+            source = `assets/photographers/${name}/${video}`;
             thumbnail = document.createElement("video");
             button.setAttribute("aria-label", `video, ${title}, closeup view`);
         }
@@ -61,7 +61,7 @@ let mediaFactory = (data, photographer) => {
     }
 
     return { date, likes, title, getMediaCardDOM, getLikePriceDOM };
-};
+}
 
 // Add a like to a media + add like in the photographer information 
 function addLike(e) {
