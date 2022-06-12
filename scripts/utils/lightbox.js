@@ -120,8 +120,8 @@ function openLightbox(media) {
 // Close lightbox
 function closeLightbox() {
     let imgSrc = lightbox.querySelector(".media").firstChild.src;
-    let src = window.location.href.split(window.location.pathname)[0];
-    imgSrc = imgSrc.replace(src + "/", "");
+    let src = window.location.href.split("photographer.html")[0];
+    imgSrc = imgSrc.replace(src, "");
     document.body.style.overflow = "auto";
     document.querySelector("main").setAttribute("aria-hidden", "false");
     lightbox.setAttribute("aria-hidden", "true");
