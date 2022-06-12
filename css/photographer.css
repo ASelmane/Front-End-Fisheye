@@ -214,8 +214,10 @@ textarea{
     width: 1.2em;
     height: 1.2em;
     background-color: black;
-    -webkit-mask: url('../assets/icons/heart.svg') no-repeat center;
-    mask: url('../assets/icons/heart.svg') no-repeat center;
+    mask: url("../assets/icons/heart.svg");
+    mask-repeat: no-repeat;
+    -webkit-mask: url("../assets/icons/heart.svg");
+    -webkit-mask-repeat: no-repeat;
 }
 
 .liked .heart{
@@ -269,7 +271,6 @@ textarea{
     display: flex;
     background-color: #901c1c;
     flex-flow: column;
-    align-items: left;
     justify-content: center;
     width: 100%;
     margin-left:-1.2em;
@@ -306,9 +307,10 @@ textarea{
     
 }
 
-.filter h2{
+.filter span{
     font-size: 1.5em;
     margin: 0;
+    font-weight: bold;
 }
 
 .filter img{
@@ -373,8 +375,10 @@ button{
     background-color: #901c1c;
     border-radius: 50%;
     cursor: pointer;
-    -webkit-mask: url('../assets/icons/close.svg') no-repeat center;
-    mask: url('../assets/icons/close.svg') no-repeat center;
+    mask: url('../assets/icons/close.svg');
+    mask-repeat: no-repeat;
+    -webkit-mask: url('../assets/icons/close.svg');
+    -webkit-mask-repeat: no-repeat;
 }
 
 .media{
@@ -397,9 +401,11 @@ button{
     width: 42px;
     height: 42px;
     background-color: #901C1C;
-    -webkit-mask: url('../assets/icons/arrow.svg') no-repeat center;
-    mask: url('../assets/icons/arrow.svg') no-repeat center;
     cursor: pointer;
+    mask: url('../assets/icons/arrow.svg');
+    mask-repeat: no-repeat;
+    -webkit-mask: url('../assets/icons/arrow.svg');
+    -webkit-mask-repeat: no-repeat;
 }
 
 .right-arrow:focus, .left-arrow:focus, .btn-close:focus{
@@ -447,7 +453,7 @@ button:focus{
         grid-template-columns: 1fr 1fr;
     }
 
-    .filter h2{
+    .filter span{
         font-size: 1.3em;
     }
 }
@@ -474,7 +480,7 @@ button:focus{
         order: 3;
     }
 
-    .filter h2{
+    .filter span{
         font-size: 1em;
     }
 
