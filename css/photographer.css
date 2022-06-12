@@ -117,7 +117,7 @@ form label {
 form div {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 95%;
     align-items: self-start;
     margin-bottom: 26px;
 }
@@ -128,6 +128,8 @@ form input {
     border: none;
     border-radius: 5px;
     margin-bottom: 1em;
+    font-size: 1.5em;
+    padding: 0 0.5em;
 }
 
 .photograph-info {
@@ -169,6 +171,8 @@ form input {
 
 textarea{
     width: 100%;
+    font-size: 1.5em;
+    padding: 0.5em;
 }
 
 .card{
@@ -486,6 +490,10 @@ button:focus{
     .closeup{
         max-width: 95vw;
     }
+
+    .modal header {
+        align-items: flex-start;
+    }
 }
 
 @media screen and (max-width: 500px){
@@ -501,5 +509,10 @@ button:focus{
     .media-section{
         grid-template-columns: 1fr;
         margin: 0 auto 5em;
+    }
+
+    .modal header h2 {
+        width: 72%;
+        font-size: 3em;
     }
 }

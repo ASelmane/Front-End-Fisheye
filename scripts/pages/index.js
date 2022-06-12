@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* global photographerFactory */
 async function getPhotographers() {
     // get the data from the json file
     try {

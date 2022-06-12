@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-function photographerFactory(data) {
+/* exported photographerFactory */
+let photographerFactory = (data) => {
     const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/Photographers_ID/${portrait}`;
@@ -50,4 +50,4 @@ function photographerFactory(data) {
     }
 
     return { name, picture, getUserCardDOM, getUserProfilDOM };
-}
+};

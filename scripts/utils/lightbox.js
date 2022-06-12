@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* exported getCardList */
 const lightbox = document.getElementById("lightbox");
 let leftArrow = document.querySelector(".left-arrow");
 let rightArrow = document.querySelector(".right-arrow");
@@ -10,14 +10,14 @@ let cards = "";
 closeBtn.addEventListener("click", closeLightbox);
 
 // get media list and set event listeners on each media
-function getCardList() {
+let getCardList = () => {
     cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
         card.querySelector("button").addEventListener("click", () => {
             openLightbox(card);
         });
     });
-}
+};
 
 // Set different action on the keyboard (left and right arrow, escape) + block focus on the lightbox
 document.addEventListener("keydown", (e) => {

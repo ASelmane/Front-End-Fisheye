@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-function mediaFactory(data, photographer) {
+/* exported mediaFactory */
+let mediaFactory = (data, photographer) => {
     const { date, image, video, likes, title } = data;
     const name = photographer.name.split(" ")[0];
 
@@ -61,7 +61,7 @@ function mediaFactory(data, photographer) {
     }
 
     return { date, likes, title, getMediaCardDOM, getLikePriceDOM };
-}
+};
 
 // Add a like to a media + add like in the photographer information 
 function addLike(e) {

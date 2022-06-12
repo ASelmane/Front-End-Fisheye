@@ -1,4 +1,3 @@
-
 const modal = document.getElementById("contact_modal");
 const form = document.getElementById("form");
 
