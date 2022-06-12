@@ -1,9 +1,8 @@
 async function getPhotographers() {
-    // Penser à remplacer par les données récupérées dans le json
+    // get the data from the json file
     try {
         let response = await fetch("data/photographers.json");
         const photographers = await response.json();
-        console.log(photographers);
         return photographers;
     } catch (error) {
         console.error(error);
@@ -13,6 +12,7 @@ async function getPhotographers() {
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
+    // create the DOM elements for each photographers
     photographers.forEach((photographer) => {
         const photographerModel = photographerFactory(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
@@ -21,7 +21,6 @@ async function displayData(photographers) {
 }
 
 async function init() {
-    // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     displayData(photographers);
 }

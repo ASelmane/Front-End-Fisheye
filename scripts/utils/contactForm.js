@@ -1,7 +1,11 @@
-/* eslint-disable no-unused-vars */
+
 const modal = document.getElementById("contact_modal");
 const form = document.getElementById("form");
 
+document.getElementById("modal-open").addEventListener("click", displayModal);
+document.getElementById("modal-close").addEventListener("click", closeModal);
+
+// Show contact modal
 function displayModal() {
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
@@ -10,6 +14,7 @@ function displayModal() {
     document.querySelector("main").setAttribute("aria-hidden", "true");
 }
 
+// Hide contact modal
 function closeModal() {
     modal.style.display = "none";
     document.body.style.overflow = "auto";
@@ -18,7 +23,7 @@ function closeModal() {
     document.getElementById("modal-open").focus();
 }
 
-
+// Close modal when user clicks on Escape + set and block focus on modal
 document.addEventListener("keydown", (e) => {
     if (modal.getAttribute("aria-hidden") === "false") {
         if (e.key === "Escape") {
@@ -39,7 +44,7 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-
+// submit form in console.log
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log("Prénom: " + form.firstname.value);

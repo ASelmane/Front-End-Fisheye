@@ -1,9 +1,9 @@
-/* eslint-disable no-unused-vars */
 function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/Photographers_ID/${portrait}`;
 
+    // Create the DOM elements for the photographer article on index page
     function getUserCardDOM() {
         const article = document.createElement("article");
         const a = document.createElement("a");
@@ -25,6 +25,7 @@ function photographerFactory(data) {
         return article;
     }
 
+    // Create the DOM elements for the photographer information on photographer page
     function getUserProfilDOM() {
         const photographerHeader = document.querySelector(".photograph-header");
         const div = document.createElement("div");

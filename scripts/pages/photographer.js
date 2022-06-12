@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 let filter = document.querySelector(".filter");
 let popularity = document.querySelector(".popularity");
 let date = document.querySelector(".date");
@@ -9,7 +7,7 @@ let photograph = {};
 let mediaSort = {};
 
 
-//Change l'ordre des medias
+//Show or hide the filter selection
 filter.addEventListener("click", () => {
     if (filter.classList.contains("active")) {
         filter.ariaExpanded = true;
@@ -19,10 +17,10 @@ filter.addEventListener("click", () => {
     else {
         filter.ariaExpanded = false;
         filter.classList.add("active");
-        
     }
 });
 
+// Leave filter selection with the Escape key
 document.addEventListener("keydown", (e) => {
     if (filter.classList.contains("active")) {
         if (e.key === "Escape") {
@@ -33,6 +31,7 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+// Sort the media by like
 popularity.addEventListener("click", () => {
     if(!popularity.classList.contains("select")) {
         document.querySelector(".media-section").innerHTML = "";
@@ -62,6 +61,7 @@ popularity.addEventListener("click", () => {
     }
 });
 
+// Sort the media by date
 date.addEventListener("click", () => {
     if(!date.classList.contains("select")) {
         document.querySelector(".media-section").innerHTML = "";
@@ -91,6 +91,7 @@ date.addEventListener("click", () => {
     }
 });
 
+// Sort the media by title
 title.addEventListener("click", () => {
     if(!title.classList.contains("select")) {
         document.querySelector(".media-section").innerHTML = "";
@@ -120,7 +121,7 @@ title.addEventListener("click", () => {
     }
 });
 
-//sort media with different filter (likes, dates, titles)
+// Sort media with different filter (likes, dates, titles)
 function getSortMedia(filter) {
     if(filter === "title") {
         return function (a, b) {
@@ -143,6 +144,7 @@ function getSortMedia(filter) {
     }
 }
 
+// Get the list of the medias from json file
 async function getPhotographer() {
     let params = new URL(document.location).searchParams;
     let id = params.get("id");
@@ -159,6 +161,7 @@ async function getPhotographer() {
     }
 }
 
+// create the DOM elements for each medias
 async function displayData(photographer, medias) {
     photographerFactory(photographer).getUserProfilDOM();
     mediaFactory(medias, photographer).getLikePriceDOM();
@@ -171,7 +174,6 @@ async function displayData(photographer, medias) {
 }
 
 async function init() {
-    // Récupère les datas des photographes
     const { photographer, medias } = await getPhotographer();
     medias.sort(getSortMedia("likes"));
     displayData(photographer, medias);

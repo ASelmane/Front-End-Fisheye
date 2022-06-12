@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const lightbox = document.getElementById("lightbox");
 let leftArrow = document.querySelector(".left-arrow");
 let rightArrow = document.querySelector(".right-arrow");
@@ -6,8 +5,10 @@ let currentCard = lightbox.querySelector(".media");
 const closeBtn = document.querySelector(".btn-close");
 let cards = "";
 
+// Close lightbox
 closeBtn.addEventListener("click", closeLightbox);
 
+// get media list and set event listeners on each media
 function getCardList() {
     cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
@@ -17,6 +18,7 @@ function getCardList() {
     });
 }
 
+// Set different action on the keyboard (left and right arrow, escape) + block focus on the lightbox
 document.addEventListener("keydown", (e) => {
     if (lightbox.getAttribute("aria-hidden") === "false") {
         switch (e.key) {
@@ -51,7 +53,9 @@ document.addEventListener("keydown", (e) => {
 });
 
 rightArrow.addEventListener("click", getNextMedia);
+leftArrow.addEventListener("click", getPrevMedia);
 
+// Get next media on the lightbox
 function getNextMedia() {
     currentCard = lightbox.querySelector(".media");
     for (let i = 0; i < cards.length; i++) {
@@ -62,6 +66,7 @@ function getNextMedia() {
     }
 }
 
+// Get previous media on the lightbox
 function getPrevMedia() {
     currentCard = lightbox.querySelector(".media");
     for (let i = 0; i < cards.length; i++) {
@@ -72,8 +77,7 @@ function getPrevMedia() {
     }
 }
 
-leftArrow.addEventListener("click", getPrevMedia);
-
+// Open lightbox on the selected media
 function openLightbox(media) {
     lightbox.classList.add("show");
     document.body.style.overflow = "hidden";
@@ -112,6 +116,7 @@ function openLightbox(media) {
     lightbox.querySelector(".closeup").focus();
 }
 
+// Close lightbox
 function closeLightbox() {
     let imgSrc = lightbox.querySelector(".media").firstChild.src;
     let src = window.location.href.split(window.location.pathname)[0];

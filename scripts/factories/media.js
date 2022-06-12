@@ -1,8 +1,8 @@
-
 function mediaFactory(data, photographer) {
     const { date, image, video, likes, title } = data;
     const name = photographer.name.split(" ")[0];
 
+    // Create the DOM elements for the media in the gallery
     function getMediaCardDOM() {
         const mediaSection = document.querySelector(".media-section");
         const div = document.createElement("div");
@@ -39,6 +39,7 @@ function mediaFactory(data, photographer) {
         div.append(button, h3, likeBtn);
     }
 
+    // Create the DOM elements for the photograph information in bottom right corner
     function getLikePriceDOM() {
         let likes = 0;
         const photographInfo = document.querySelector(".photograph-info");
@@ -61,6 +62,7 @@ function mediaFactory(data, photographer) {
     return { date, likes, title, getMediaCardDOM, getLikePriceDOM };
 }
 
+// Add a like to a media + add like in the photographer information 
 function addLike(e) {
     const div = e.currentTarget;
     let counter = div.querySelector(".counter");
